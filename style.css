@@ -57,24 +57,33 @@ body {
     height: 100%;
     object-fit: contain; /* keeps image within the div without stretching */
 }
-
-/* --- Language Switcher (Compact) --- */
+/* --- Language Switcher --- */
 .language-switcher { 
     display: flex; 
+    flex-direction: column;  /* stack vertically */
     align-items: center; 
-    gap: 0.3rem;            /* less gap */
-    flex-shrink: 0;         /* don't let it shrink smaller than design */
+    gap: 0.25rem;             /* spacing between items */
 }
 .lang-label { 
-    font-size: 0.75rem;     /* smaller text */
+    font-size: 0.9rem; 
     font-weight: 500; 
     color: #4a5568; 
+    line-height: 1;
 }
+
+/* मराठी always above, EN always below */
+.language-switcher .lang-label:first-of-type {
+    order: -1;   /* मराठी above */
+}
+.language-switcher .lang-label:last-of-type {
+    order: 1;    /* EN below */
+}
+
 .switch { 
     position: relative; 
     display: inline-block; 
-    width: 36px;            /* smaller width */
-    height: 18px;           /* smaller height */
+    width: 50px; 
+    height: 26px; 
 }
 .switch input { 
     opacity: 0; 
@@ -90,30 +99,28 @@ body {
     bottom: 0; 
     background-color: #ccc; 
     transition: .4s; 
-    border-radius: 34px;
 }
 .slider:before { 
     position: absolute; 
     content: ""; 
-    height: 12px; 
-    width: 12px; 
-    left: 3px; 
-    bottom: 3px; 
+    height: 18px; 
+    width: 18px; 
+    left: 4px; 
+    bottom: 4px; 
     background-color: white; 
     transition: .4s; 
-    border-radius: 50%; 
 }
 input:checked + .slider { 
     background-color: var(--primary-color); 
 }
 input:checked + .slider:before { 
-    transform: translateX(18px);  /* adjusted for smaller size */
+    transform: translateX(24px); 
 }
-
-/* --- Layout balance --- */
-.logo-container {
-    flex-grow: 1;   /* ✅ brand logo+name always take maximum available space */
-    min-width: 0;   /* ✅ prevent overflow issues */
+.slider.round { 
+    border-radius: 34px; 
+}
+.slider.round:before { 
+    border-radius: 50%; 
 }
 
 /* --- Responsive Fix for Language Switcher --- */
@@ -125,6 +132,7 @@ input:checked + .slider:before {
         margin-top: 0.5rem;
     }
 }
+
 
 /* --- Quick Actions --- */
 .quick-actions { background-color: #edf2f7; padding: 0.75rem 0; text-align: center; border-bottom: 1px solid var(--border-color); }
