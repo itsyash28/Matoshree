@@ -60,16 +60,70 @@ body {
 
 
 /* --- Language Switcher --- */
-.language-switcher { display: flex; align-items: center; gap: 0.5rem; }
-.lang-label { font-size: 0.9rem; font-weight: 500; color: #4a5568; }
-.switch { position: relative; display: inline-block; width: 50px; height: 26px; }
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
-.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; }
-input:checked + .slider { background-color: var(--primary-color); }
-input:checked + .slider:before { transform: translateX(24px); }
-.slider.round { border-radius: 34px; }
-.slider.round:before { border-radius: 50%; }
+.language-switcher { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+}
+.lang-label { 
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    color: #4a5568; 
+}
+.switch { 
+    position: relative; 
+    display: inline-block; 
+    width: 50px; 
+    height: 26px; 
+}
+.switch input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+}
+.slider { 
+    position: absolute; 
+    cursor: pointer; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: #ccc; 
+    transition: .4s; 
+}
+.slider:before { 
+    position: absolute; 
+    content: ""; 
+    height: 18px; 
+    width: 18px; 
+    left: 4px; 
+    bottom: 4px; 
+    background-color: white; 
+    transition: .4s; 
+}
+input:checked + .slider { 
+    background-color: var(--primary-color); 
+}
+input:checked + .slider:before { 
+    transform: translateX(24px); 
+}
+.slider.round { 
+    border-radius: 34px; 
+}
+.slider.round:before { 
+    border-radius: 50%; 
+}
+
+/* --- Responsive Fix for Language Switcher --- */
+@media (max-width: 768px) {
+    .header-right .language-switcher {
+        display: flex !important;   /* ✅ keep visible on mobile */
+        justify-content: flex-end;  /* ✅ align right under logo */
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
 
 /* --- Quick Actions --- */
 .quick-actions { background-color: #edf2f7; padding: 0.75rem 0; text-align: center; border-bottom: 1px solid var(--border-color); }
@@ -161,4 +215,5 @@ input:checked + .slider:before { transform: translateX(24px); }
     .hero h2 { font-size: 2rem; }
     .section-title, .page-title { font-size: 1.8rem; }
 }
+
 
